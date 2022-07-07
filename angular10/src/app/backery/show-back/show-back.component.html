@@ -1,0 +1,46 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" data-toggle="modal" data-target="#exampleModal"
+  (click)="createBackeryItems()" data-backdrop="static" data-keyboard="false">
+  Create Backery
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Backery</h5>
+        <button type="button" class="close" #exampleModalCloseButton data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-create-back (close)="closeCreate($event)" *ngIf="ActivateAddEditBackComp">
+        </app-create-back>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ItemType</th>
+      <th>InitPrice</th>
+      <th>CurrentPrice</th>
+      <th>NextPriceTime</th>
+      <th>NextPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of BackeryList">
+      <td>{{dataItem.ItemType}}</td>
+      <td>{{dataItem.InitPrice}}</td>
+      <td>{{dataItem.CurrentPrice}}</td>
+      <td>{{dataItem.NextPriceTime}}</td>
+      <td>{{dataItem.NextPrice}}</td>
+    </tr>
+  </tbody>
+</table>
